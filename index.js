@@ -1,10 +1,36 @@
+/**
+ * library imports
+ */
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://imdeepanshugpt:mindtree@301nodejs-xkhjj.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+const bodyParser = require('body-parser');
+
+/**
+ * configuration imports
+ */
+const config = require('./config/config');
+const database = require('./config/database');
+
+const app = express();
+app.use(bodyParser.json());
+
+/**
+ * routers imports
+ */
+const restaurant = require('./src/routes/restaurant');
+app.use('/search', restaurant);
+
+
 mongoose.connection.once('open', () => {
-    console.log('conneted to database');
+    console.log('connected to database...');
+    app.listen(config.port, () => {
+        console.log('Restaurant server is running at port ', config.port);
+    });
 });
-app.listen(4000, () => {
-    console.log('Server is running at port 4000');
+mongoose.connection.on('error', (error) => {
+    console.log('Database Error : ', error);
+});
+
+app.get('/', (req, res) => {
+    res.send('Restaurant Server Started');
 });
