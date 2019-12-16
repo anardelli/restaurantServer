@@ -8,8 +8,7 @@ const bodyParser = require('body-parser');
 /**
  * configuration imports
  */
-const config = require('./config/config');
-const database = require('./config/database');
+require('./config/database');
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,11 +19,13 @@ app.use(bodyParser.json());
 const restaurant = require('./src/routes/restaurant');
 app.use('/search', restaurant);
 
-
+const PORT = process.env.PORT || 4444;
+const IP_ADDRESS = process.env.IP_ADDRESS || '127.0.0.1';
+console.log('enviornment', process.env.NODE_ENV);
 mongoose.connection.once('open', () => {
     console.log('connected to database...');
-    app.listen(config.port, () => {
-        console.log('Restaurant server is running at port ', config.port);
+    app.listen(PORT, () => {
+        console.log('Restaurant server is running at IP, Port Number ', IP_ADDRESS, PORT);
     });
 });
 mongoose.connection.on('error', (error) => {
@@ -32,5 +33,5 @@ mongoose.connection.on('error', (error) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Restaurant Server Started');
+    res.send('Restaurant Server Started process id is ' + process.pid +' and port is '+ PORT);
 });
