@@ -37,3 +37,5 @@ mongoose.connection.on('error', (error) => {
 app.get('/', (req, res) => {
     res.send('Restaurant Server Started process id is ' + process.pid +' and port is '+ PORT);
 });
+
+module.exports = app;
