@@ -4,6 +4,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('./config/consul');
+require('./src/notification/consumer');
 
 /**
  * configuration imports
