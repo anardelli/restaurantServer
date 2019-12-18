@@ -25,7 +25,8 @@ open.then(function (connection) {
   return channel.assertQueue(queueName).then(function (ok) {
     return channel.consume(queueName, function (message) {
       if (message !== null) {
-        const output = `
+        if (message && message.details && message.details.orderId && message.details.customerId) {
+          const output = `
             <h1>You got an order</h1>
             <h3>Order details</h3>
             <ul>  
@@ -33,18 +34,19 @@ open.then(function (connection) {
               <li>Customer Id: ${message.details.customerId}</li>
             </ul>
           `;
-        const mailOptions = {
-          from: 'deepanshunkt@gmail.com',
-          to: 'deepanshunkt@gmail.com',
-          subject: 'Order Received',
-          html: output
-        };
-        transporter.sendMail(mailOptions, function (err, info) {
-          if (err)
-            console.log('Sending a mail', err);
-          else
-            console.log('Sending a mail', info);
-        });
+          const mailOptions = {
+            from: 'deepanshunkt@gmail.com',
+            to: 'deepanshunkt@gmail.com',
+            subject: 'Order Received',
+            html: output
+          };
+          transporter.sendMail(mailOptions, function (err, info) {
+            if (err)
+              console.log('Sending a mail', err);
+            else
+              console.log('Sending a mail', info);
+          });
+        }
         console.log(message.content.toString());
         channel.ack(message);
       }
