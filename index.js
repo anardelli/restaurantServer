@@ -16,6 +16,14 @@ const app = express();
 app.use(bodyParser.json());
 
 /**
+ * Swagger Implemenation
+ */
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocumentation = require('./swagger.json');
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation));
+
+/**
  * routers imports
  */
 const restaurant = require('./src/routes/restaurant');
@@ -23,6 +31,7 @@ app.use('/search', restaurant);
 
 const PORT = process.env.PORT || 4444;
 const IP_ADDRESS = process.env.IP_ADDRESS || '127.0.0.1';
+
 console.log('enviornment', process.env.NODE_ENV);
 mongoose.connection.once('open', () => {
     console.log('connected to database...');

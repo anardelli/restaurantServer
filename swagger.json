@@ -1,0 +1,147 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Restaurant API's",
+        "version": "1.0.0",
+        "title": "Restaurant Search",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "deepanshu.gupta4@mindtree.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/search": {
+            "post": {
+                "tags": [
+                    "Restaurant Search"
+                ],
+                "summary": "search the restaurant",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "401": {
+                        "description": "unauthorized"
+                    },
+                    "200": {
+                        "description": "success"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "token": {
+            "type": "apiKey",
+            "name": "x-access-token",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Restaurant": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "string"
+                        },
+                        "locality": {
+                            "type": "string"
+                        },
+                        "city": {
+                            "type": "string"
+                        },
+                        "latitude": {
+                            "type": "string"
+                        },
+                        "longitude": {
+                            "type": "string"
+                        },
+                        "zipcode": {
+                            "type": "string"
+                        },
+                        "country_id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "average_cost_for_two": {
+                    "type": "string"
+                },
+                "price_range": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "date"
+                },
+                "photos_url": {
+                    "type": "string"
+                },
+                "menu_url": {
+                    "type": "string"
+                },
+                "aggregate_rating": {
+                    "type": "string"
+                },
+                "has_online_delivery": {
+                    "type": "string"
+                },
+                "is_delivering_now": {
+                    "type": "string"
+                },
+                "has_table_booking": {
+                    "type": "string"
+                },
+                "cuisines": {
+                    "type": "string"
+                },
+                "phone_numbers": {
+                    "type": "string"
+                },
+                "photos": {
+                    "type": "Array"
+                },
+                "all_reviews": {
+                    "type": "Array"
+                },
+                "menu": {
+                    "type": "Array",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
