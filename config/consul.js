@@ -18,7 +18,7 @@ function fromCallback(fn) {
 }
 const consul = require('consul')({
     promisify: fromCallback,
-    host: '172.21.130.161'
+    host: '172.17.0.2'
 });
 
 
@@ -58,8 +58,9 @@ setInterval(() => {
     consul.agent.check.pass({ id: `service:${CONSUL_ID}` }, err => {
         if (err) {
             console.log('health report failed ', err);
-        } else
-        console.log('told Consul that we are healthy');
+        } else {
+            console.log('told Consul that we are healthy');
+        }
     });
 }, 5 * 1000);
 
