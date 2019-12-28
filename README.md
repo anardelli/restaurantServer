@@ -1,4 +1,4 @@
-# restaurantServer
+# RestaurantServer
 
 - It is a restaurant server which is used to search the restaurant based on current localtion, city, location, dishes, average cost of two person,cuisines and name.
 
