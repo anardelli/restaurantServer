@@ -16,3 +16,7 @@ It  is a restaurant server.
 - docker build -t restaurant_server .
 - docker run -it -d -p 4000:4000 restaurant_server
 
+# You can pull the image from docker hub also.
+- https://hub.docker.com/r/imdeepanshu/restaurant_server
+- docker pull imdeepanshu/restaurant_server
+- To run this container it requires docker consul container running at IP 172.17.0.2 
