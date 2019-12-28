@@ -26,4 +26,4 @@
 # You can pull the image from docker hub also.
 - https://hub.docker.com/r/imdeepanshu/restaurant_server
 - docker pull imdeepanshu/restaurant_server
-- To run this container it requires docker consul container running at IP 172.17.0.2 
+- To run this container it requires docker consul container should be running at IP 172.17.0.2 
