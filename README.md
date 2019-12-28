@@ -13,6 +13,6 @@ It  is a restaurant server.
 
 # You can make image of this server by using following command.
 
-- docker build -t restaurant-server .
+- docker build -t restaurant_server .
 - docker run -it -d -p 4000:4000 restaurant_server
 
