@@ -1,7 +1,11 @@
 # restaurantServer
+
 - It is a restaurant server which is used to search the restaurant based on current localtion, city, location, dishes, average cost of two person,cuisines and name.
+
 - It also consumes message from order management API of restaurant and notify restaurants by email.
-** clustering, Service Discovery, Messaging using RabbitMQ( AQMP ) .
+
+**Clustering, Service Discovery, Messaging using RabbitMQ( AQMP ).**
+
 **Technology Used: NodeJS, Express JS, MongoDB, RabbitMQ, PM2, Docker, Consul.**
 
 # How to run this server
